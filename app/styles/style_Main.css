@@ -1,0 +1,251 @@
+/********************************************************
+*********************************************************
+                      GRID SYSTEM
+*********************************************************
+********************************************************/
+
+body {
+  background-color: #252826;  
+}
+
+.coll8md {
+  background-color: #252826;
+  border: 25px solid #5e9132;
+  height: 500px;
+}
+
+.coll4md {
+  background-color: #252826;
+  border: 25px solid #5e9132;
+  height: 500px;
+}
+
+.grid {
+  margin-top: 20px
+}
+
+/********************************************************
+*********************************************************
+                      RIGHT COLUMN
+*********************************************************
+********************************************************/
+.buttonToolbar {
+  padding: 10px;
+}
+
+.btn-group-main {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  width: 100%;
+  font-weight: bold;
+  font-family: cursive;
+}
+
+.btn-group-main:hover {
+  background-color: #7aff07; /* Green LIGHT */
+  color: black;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.line-or {
+  color: #a0aa2f;
+  font-weight: bold;
+  font-size: 10px;
+  text-align: center;
+  font-family: cursive;
+}
+
+.user-places {
+  text-align: center;
+  font-weight: bold;
+  font-family: cursive;
+  color: white;
+  font-size: 25px;
+  margin: 25px 0px 10px 0px;
+  text-shadow: rgb(60, 168, 80) 12px 0px 0px, rgb(60, 168, 80) 11.9584px 0.998843px 0px, rgb(60, 168, 80) 11.8337px 1.99075px 0px, rgb(60, 168, 80) 11.6269px 2.96885px 0px, rgb(60, 168, 80) 11.3395px 3.92634px 0px, rgb(60, 168, 80) 10.9733px 4.85657px 0px, rgb(60, 168, 80) 10.531px 5.75311px 0px, rgb(60, 168, 80) 10.0156px 6.60971px 0px, rgb(60, 168, 80) 9.43065px 7.42044px 0px, rgb(60, 168, 80) 8.78027px 8.17967px 0px, rgb(60, 168, 80) 8.06895px 8.88212px 0px, rgb(60, 168, 80) 7.30163px 9.52293px 0px, rgb(60, 168, 80) 6.48363px 10.0977px 0px, rgb(60, 168, 80) 5.62063px 10.6023px 0px, rgb(60, 168, 80) 4.71862px 11.0333px 0px, rgb(60, 168, 80) 3.78387px 11.3878px 0px, rgb(60, 168, 80) 2.82285px 11.6633px 0px, rgb(60, 168, 80) 1.84224px 11.8577px 0px, rgb(60, 168, 80) 0.848846px 11.9699px 0px, rgb(60, 168, 80) -0.15044px 11.9991px 0px, rgb(60, 168, 80) -1.14868px 11.9449px 0px, rgb(60, 168, 80) -2.13895px 11.8078px 0px, rgb(60, 168, 80) -3.11438px 11.5888px 0px, rgb(60, 168, 80) -4.06819px 11.2894px 0px, rgb(60, 168, 80) -4.99376px 10.9116px 0px, rgb(60, 168, 80) -5.88468px 10.458px 0px, rgb(60, 168, 80) -6.73475px 9.93192px 0px, rgb(60, 168, 80) -7.53808px 9.33688px 0px, rgb(60, 168, 80) -8.2891px 8.67703px 0px, rgb(60, 168, 80) -8.98258px 7.95696px 0px, rgb(60, 168, 80) -9.61372px 7.18167px 0px, rgb(60, 168, 80) -10.1781px 6.35653px 0px, rgb(60, 168, 80) -10.6719px 5.48727px 0px, rgb(60, 168, 80) -11.0916px 4.57993px 0px, rgb(60, 168, 80) -11.4344px 3.64081px 0px, rgb(60, 168, 80) -11.6977px 2.67641px 0px, rgb(60, 168, 80) -11.8799px 1.69344px 0px, rgb(60, 168, 80) -11.9796px 0.698716px 0px, rgb(60, 168, 80) -11.9962px -0.300857px 0px, rgb(60, 168, 80) -11.9296px -1.29834px 0px, rgb(60, 168, 80) -11.7801px -2.28682px 0px, rgb(60, 168, 80) -11.5489px -3.25942px 0px, rgb(60, 168, 80) -11.2375px -4.2094px 0px, rgb(60, 168, 80) -10.8481px -5.13016px 0px, rgb(60, 168, 80) -10.3834px -6.01532px 0px, rgb(60, 168, 80) -9.84671px -6.85874px 0px, rgb(60, 168, 80) -9.24164px -7.65454px 0px, rgb(60, 168, 80) -8.57243px -8.39723px 0px, rgb(60, 168, 80) -7.84372px -9.08163px 0px, rgb(60, 168, 80) -7.06058px -9.703px 0px, rgb(60, 168, 80) -6.22843px -10.257px 0px, rgb(60, 168, 80) -5.35305px -10.7399px 0px, rgb(60, 168, 80) -4.44052px -11.1482px 0px, rgb(60, 168, 80) -3.49717px -11.4791px 0px, rgb(60, 168, 80) -2.52955px -11.7304px 0px, rgb(60, 168, 80) -1.54437px -11.9002px 0px, rgb(60, 168, 80) -0.548477px -11.9875px 0px, rgb(60, 168, 80) 0.451226px -11.9915px 0px, rgb(60, 168, 80) 1.4478px -11.9123px 0px, rgb(60, 168, 80) 2.43432px -11.7505px 0px, rgb(60, 168, 80) 3.40395px -11.5071px 0px, rgb(60, 168, 80) 4.34995px -11.1838px 0px, rgb(60, 168, 80) 5.26576px -10.7829px 0px, rgb(60, 168, 80) 6.14503px -10.3072px 0px, rgb(60, 168, 80) 6.98164px -9.75995px 0px, rgb(60, 168, 80) 7.7698px -9.14495px 0px, rgb(60, 168, 80) 8.50404px -8.46648px 0px, rgb(60, 168, 80) 9.17925px -7.72925px 0px, rgb(60, 168, 80) 9.79076px -6.93838px 0px, rgb(60, 168, 80) 10.3343px -6.09935px 0px, rgb(60, 168, 80) 10.8061px -5.21799px 0px, rgb(60, 168, 80) 11.203px -4.30041px 0px, rgb(60, 168, 80) 11.522px -3.35299px 0px, rgb(60, 168, 80) 11.7612px -2.38229px 0px, rgb(60, 168, 80) 11.9186px -1.39506px 0px, rgb(60, 168, 80) 11.9934px -0.398151px 0px;
+}
+
+.user-places-label {
+  text-align: center;
+  font-weight: bold;
+  font-family: cursive;
+  color: white;
+  font-size: 10px;
+  margin-top: 25px;
+  opacity: 0.5;
+}
+
+/********************************************************
+*********************************************************
+                     LEFT COLUMN
+*********************************************************
+********************************************************/
+.search-input {
+  width: 90%;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  color: white;
+  background-color: #4CAF50;
+  padding: 12px 20px 12px 40px;
+  float: left;
+  height: 50px;
+}
+
+.search-icon {
+  background-color: #4CAF50;
+  height: 40px;
+}
+
+.search-icon:hover {
+  background-color: #7aff07; /* Green LIGHT */
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.search-btn {
+  background-color: #4CAF50;
+  float: left;
+  margin-left: 5px;
+  height: 50px;
+}
+
+.search-btn:hover {
+  background-color: #7aff07; /* Green LIGHT */
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.form-search {
+  margin: 0 auto;
+  width: 80%;
+  height: auto;
+  margin-top: 10px;
+
+}
+
+@media screen and (min-width: 480px) {
+    .form-search{
+          margin: 0 auto;
+          width: 95%;
+          height: auto;
+          margin-top: 10px;
+
+        }
+ }
+
+/********************************************************
+*********************************************************
+        MODALS & FORMS [sign up/ log in/ log out] 
+*********************************************************
+********************************************************/
+form {
+  width: 50%;
+  margin: auto;
+}
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #7ea050;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.closeSignUp {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.closeSignUp:hover,
+.closeSignUp:focus {
+  color: black;
+  text-decoration: none;
+cursor: pointer;
+}
+.closeLogIn {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.closeLogIn:hover,
+.closeLogIn:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.closeLogOut {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.closeLogOut:hover,
+.closeLogOut:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Float cancel and signup buttons and add an equal width */
+.form-components {
+  margin: auto;
+  margin-top: 5px;
+  width: 100%;
+  height: 35px;
+}
+
+.form-label {
+  display: block;
+  margin-top: 20px;
+  font-weight: bold;
+  font-family: cursive;
+  text-shadow: rgb(200, 224, 214) 4px 0px 0px, rgb(200, 224, 214) 3.87565px 0.989616px 0px, rgb(200, 224, 214) 3.51033px 1.9177px 0px, rgb(200, 224, 214) 2.92676px 2.72656px 0px, rgb(200, 224, 214) 2.16121px 3.36588px 0px, rgb(200, 224, 214) 1.26129px 3.79594px 0px, rgb(200, 224, 214) 0.282949px 3.98998px 0px, rgb(200, 224, 214) -0.712984px 3.93594px 0px, rgb(200, 224, 214) -1.66459px 3.63719px 0px, rgb(200, 224, 214) -2.51269px 3.11229px 0px, rgb(200, 224, 214) -3.20457px 2.39389px 0px, rgb(200, 224, 214) -3.69721px 1.52664px 0px, rgb(200, 224, 214) -3.95997px 0.56448px 0px, rgb(200, 224, 214) -3.97652px -0.432781px 0px, rgb(200, 224, 214) -3.74583px -1.40313px 0px, rgb(200, 224, 214) -3.28224px -2.28625px 0px, rgb(200, 224, 214) -2.61457px -3.02721px 0px, rgb(200, 224, 214) -1.78435px -3.57996px 0px, rgb(200, 224, 214) -0.843183px -3.91012px 0px, rgb(200, 224, 214) 0.150409px -3.99717px 0px, rgb(200, 224, 214) 1.13465px -3.8357px 0px, rgb(200, 224, 214) 2.04834px -3.43574px 0px, rgb(200, 224, 214) 2.83468px -2.82216px 0px, rgb(200, 224, 214) 3.44477px -2.03312px 0px, rgb(200, 224, 214) 3.84068px -1.11766px 0px, rgb(200, 224, 214) 3.9978px -0.132717px 0px;
+}
+.sign-up-label {
+  font-weight: bold;
+  font-family: cursive;
+  text-shadow: rgb(200, 224, 214) 10px 0px 0px, rgb(200, 224, 214) 9.95004px 0.998334px 0px, rgb(200, 224, 214) 9.80067px 1.98669px 0px, rgb(200, 224, 214) 9.55336px 2.9552px 0px, rgb(200, 224, 214) 9.21061px 3.89418px 0px, rgb(200, 224, 214) 8.77583px 4.79426px 0px, rgb(200, 224, 214) 8.25336px 5.64642px 0px, rgb(200, 224, 214) 7.64842px 6.44218px 0px, rgb(200, 224, 214) 6.96707px 7.17356px 0px, rgb(200, 224, 214) 6.2161px 7.83327px 0px, rgb(200, 224, 214) 5.40302px 8.41471px 0px, rgb(200, 224, 214) 4.53596px 8.91207px 0px, rgb(182, 186, 227) 3.62358px 9.32039px 0px, rgb(182, 186, 227) 2.67499px 9.63558px 0px, rgb(182, 186, 227) 1.69967px 9.8545px 0px, rgb(182, 186, 227) 0.707372px 9.97495px 0px, rgb(182, 186, 227) -0.291995px 9.99574px 0px, rgb(182, 186, 227) -1.28844px 9.91665px 0px, rgb(182, 186, 227) -2.27202px 9.73848px 0px, rgb(182, 186, 227) -3.2329px 9.463px 0px, rgb(182, 186, 227) -4.16147px 9.09297px 0px, rgb(182, 186, 227) -5.04846px 8.63209px 0px, rgb(182, 186, 227) -5.88501px 8.08496px 0px, rgb(182, 186, 227) -6.66276px 7.45705px 0px, rgb(182, 186, 227) -7.37394px 6.75463px 0px, rgb(182, 186, 227) -8.01144px 5.98472px 0px, rgb(182, 186, 227) -8.56889px 5.15501px 0px, rgb(182, 186, 227) -9.04072px 4.2738px 0px, rgb(182, 186, 227) -9.42222px 3.34988px 0px, rgb(182, 186, 227) -9.70958px 2.39249px 0px, rgb(182, 186, 227) -9.89993px 1.4112px 0px, rgb(182, 186, 227) -9.99135px 0.415807px 0px, rgb(182, 186, 227) -9.98295px -0.583741px 0px, rgb(182, 186, 227) -9.8748px -1.57746px 0px, rgb(182, 186, 227) -9.66798px -2.55541px 0px, rgb(182, 186, 227) -9.36457px -3.50783px 0px, rgb(182, 186, 227) -8.96758px -4.4252px 0px, rgb(182, 186, 227) -8.481px -5.29836px 0px, rgb(182, 186, 227) -7.90968px -6.11858px 0px, rgb(182, 186, 227) -7.25932px -6.87766px 0px, rgb(182, 186, 227) -6.53644px -7.56803px 0px, rgb(182, 186, 227) -5.74824px -8.18277px 0px, rgb(182, 186, 227) -4.90261px -8.71576px 0px, rgb(182, 186, 227) -4.00799px -9.16166px 0px, rgb(182, 186, 227) -3.07333px -9.51602px 0px, rgb(182, 186, 227) -2.10796px -9.7753px 0px, rgb(182, 186, 227) -1.12153px -9.93691px 0px, rgb(182, 186, 227) -0.123887px -9.99923px 0px, rgb(182, 186, 227) 0.87499px -9.96165px 0px, rgb(182, 186, 227) 1.86512px -9.82453px 0px, rgb(182, 186, 227) 2.83662px -9.58924px 0px, rgb(182, 186, 227) 3.77978px -9.25815px 0px, rgb(182, 186, 227) 4.68517px -8.83455px 0px, rgb(182, 186, 227) 5.54374px -8.32267px 0px, rgb(182, 186, 227) 6.34693px -7.72764px 0px, rgb(182, 186, 227) 7.0867px -7.0554px 0px, rgb(182, 186, 227) 7.75566px -6.31267px 0px, rgb(182, 186, 227) 8.34713px -5.50686px 0px, rgb(182, 186, 227) 8.8552px -4.64602px 0px, rgb(182, 186, 227) 9.27478px -3.73877px 0px, rgb(182, 186, 227) 9.6017px -2.79415px 0px, rgb(182, 186, 227) 9.83268px -1.82162px 0px, rgb(200, 224, 214) 9.96542px -0.830894px 0px;
+}
+.sign-up-btn, .log-in-btn {
+  font-weight: bold;
+  font-family: cursive;
+  font-size: 30px;
+  background-color: #747a8c;
+  color: #ffe100;
+  height: 55px;
+}
+.sign-up-btn:hover, .log-in-btn:hover {
+  background-color: #cdff05;
+  color: #2d2d2a;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+/********************************************************
+********************************************************/
