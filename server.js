@@ -176,6 +176,14 @@ app.post("/log-out", function(request, response) {
 });
 /***********************************/
 app.post("/send-data-to-search", function(request, response) {
+    // if loged in -> send search_string to user in DB
+    if(request.isAuthenticated()) {
+      userModel.findOneAndUpdate({"_id": request.session.passport.user}, {search: request.body["search_string"]}, (err, document) => {
+             if(err) {
+               console.log("ERROR!: ", err);
+             } 
+        });
+    }
     // for search
     client.search({
         location: request.body["search_string"]
@@ -191,7 +199,7 @@ app.post("/islogedin", function(request, response) {
   if(request.session.hasOwnProperty("passport")) {
    userModel.findById(request.session.passport.user, (err, document) => {
      if(!err) {
-       response.json({isLogedIn: request.isAuthenticated(), nickname: document.nickname });
+       response.json({isLogedIn: request.isAuthenticated(), nickname: document.nickname, search_string: document.search});
      } 
      else {
        console.log("ERROR!: ", err);

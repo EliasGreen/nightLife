@@ -20,6 +20,23 @@ class PlaceCard extends React.Component {
 	}
   
 render() {
+    const {arrayOfPlaces} = this.props;
+    let places = arrayOfPlaces.map( (el) => {
+       return (
+         <Panel eventKey={el.id} key={"key"+el.id}>
+                    <Panel.Heading>
+                      <Panel.Title> <a className="a" target="_blank" href={el.url}><img src={el.image_url} className="img"></img></a><div className="panel-text">{el.name}<button className="going-btn">You are not going</button></div></Panel.Title>
+                      <Panel.Toggle>going btn with label</Panel.Toggle>
+                    </Panel.Heading>
+                    <Panel.Collapse>
+                      <Panel.Body>
+                        users!
+                        list
+                      </Panel.Body>
+                    </Panel.Collapse>
+               </Panel>
+         );
+    });
     return (
       <div className="PlaceCardContainer">
            <PanelGroup
@@ -27,77 +44,7 @@ render() {
             id="accordion-controlled-example"
             activeKey={this.state.activeKey}
             onSelect={this.handleSelect}>
-                <Panel eventKey="1">
-                    <Panel.Heading>
-                      <Panel.Title> <a className="a" target="_blank" href="https://www.yelp.com/biz/marine-corps-recruit-depot-san-diego-san-diego?adjust_creative=i-RvClzJyuA3s2tNR1b4YA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=i-RvClzJyuA3s2tNR1b4YA"><img src="https://s3-media2.fl.yelpcdn.com/bphoto/W6zef4xkLlac1AenWzEzdA/o.jpg" className="img"></img></a><div className="panel-text">Name go</div></Panel.Title>
-                      <Panel.Toggle>going btn with label</Panel.Toggle>
-                    </Panel.Heading>
-                    <Panel.Collapse>
-                      <Panel.Body>
-                        users!
-                        list
-                      </Panel.Body>
-                    </Panel.Collapse>
-               </Panel>
-                <Panel eventKey="2">
-                    <Panel.Heading>
-                      <Panel.Title>img + name + going btn with label</Panel.Title>
-                      <Panel.Toggle>going btn with label</Panel.Toggle>
-                    </Panel.Heading>
-                    <Panel.Collapse>
-                      <Panel.Body>
-                        users!
-                      </Panel.Body>
-                    </Panel.Collapse>
-               </Panel>
-             <Panel eventKey="3">
-                    <Panel.Heading>
-                      <Panel.Title> FIRST img + name + going btn with label</Panel.Title>
-                      <Panel.Toggle>going btn with label</Panel.Toggle>
-                    </Panel.Heading>
-                    <Panel.Collapse>
-                      <Panel.Body>
-                        users!
-                        list
-                      </Panel.Body>
-                    </Panel.Collapse>
-               </Panel>
-             <Panel eventKey="4">
-                    <Panel.Heading>
-                      <Panel.Title> FIRST img + name + going btn with label</Panel.Title>
-                      <Panel.Toggle>going btn with label</Panel.Toggle>
-                    </Panel.Heading>
-                    <Panel.Collapse>
-                      <Panel.Body>
-                        users!
-                        list
-                      </Panel.Body>
-                    </Panel.Collapse>
-               </Panel>
-             <Panel eventKey="5">
-                    <Panel.Heading>
-                      <Panel.Title> FIRST img + name + going btn with label</Panel.Title>
-                      <Panel.Toggle>going btn with label</Panel.Toggle>
-                    </Panel.Heading>
-                    <Panel.Collapse>
-                      <Panel.Body>
-                        users!
-                        list
-                      </Panel.Body>
-                    </Panel.Collapse>
-               </Panel>
-             <Panel eventKey="6">
-                    <Panel.Heading>
-                      <Panel.Title> FIRST img + name + going btn with label</Panel.Title>
-                      <Panel.Toggle>going btn with label</Panel.Toggle>
-                    </Panel.Heading>
-                    <Panel.Collapse>
-                      <Panel.Body>
-                        users!
-                        list
-                      </Panel.Body>
-                    </Panel.Collapse>
-               </Panel>
+                {places}
           </PanelGroup>
       </div>
       );

@@ -1,4 +1,6 @@
+
 const React = require('react');
+const { connect } = require('react-redux');
 const Link = require('react-router-dom').Link
 const style = require('../styles/style_Main');
 const { Grid, Col, Row, ButtonToolbar, Button} = require('react-bootstrap');
@@ -19,7 +21,8 @@ class Main extends React.Component {
       label_log_in: "Log IN",
       // button-bar
       button_bar: "",
-      search_string: ""
+      search_string: "",
+      places_bar: null
     };
      this.handleClickSignUp = this.handleClickSignUp.bind(this);
      this.handleClickLogIn = this.handleClickLogIn.bind(this);
@@ -86,7 +89,7 @@ class Main extends React.Component {
   }
   /**************************/
   handleSearchClick(event) {
-    let that = this;
+      let that = this;
       const xhr = new XMLHttpRequest();
       
       xhr.open('POST', '/send-data-to-search', true);
@@ -105,7 +108,9 @@ class Main extends React.Component {
           return;
         }
         let response = JSON.parse(this.responseText);
-        console.log(response);
+        that.setState({
+          ["places_bar"]: <PlaceCard arrayOfPlaces={response.businesses}/>
+           });
         }
     event.preventDefault();
   }
@@ -211,7 +216,7 @@ class Main extends React.Component {
         return;
       }
       let isLogedIn = JSON.parse(this.responseText).isLogedIn;
-      let nickname = JSON.parse(this.responseText).nickname;
+      let nickname = JSON.parse(this.responseText).nickname;      let search_string = JSON.parse(this.responseText).search_string;
       let button_bar;
       if(isLogedIn) {
        button_bar = <ButtonToolbar className="buttonToolbar">
@@ -230,8 +235,9 @@ class Main extends React.Component {
                   </ButtonToolbar>;
       }
       that.setState({
-          ["button_bar"]: button_bar
-           });
+          ["button_bar"]: button_bar,
+          ["search_string"]: search_string
+      });
     }
   }
 render() {
@@ -240,10 +246,10 @@ render() {
       <Row className="show-grid">
         <Col xs={12} md={8} className="coll8md">
           <form className="form-search">
-            <input type="text" name="search_string" placeholder="Type location to search..." className="search-input" autoComplete="off" onChange={this.handleInputChange}/>
+            <input type="text" name="search_string" placeholder="Type location to search..." className="search-input" autoComplete="off" onChange={this.handleInputChange} value={this.state.search_string}/>
             <button className="search-btn" onClick={this.handleSearchClick}><img className="search-icon" src="https://png.icons8.com/metro/50/000000/search.png"/></button>
           </form>
-          <PlaceCard/>
+          {this.state.places_bar}
         </Col>
         {/* collumn for ButtonToolBar (sign up, log in, log out) and for User Bars (bars that user want to visit tonight) */}
         <Col xs={6} md={4} className="coll4md">
@@ -310,5 +316,6 @@ render() {
     );
   }
 };
+
 
 module.exports = Main;
