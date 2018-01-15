@@ -2,13 +2,15 @@
 
 module.exports = {
  
-  UPVOTE: 'UPVOTE',
+  ADD_USER: 'ADD_USER',
   
   DOWNVOTE: 'DOWNVOTE',
 
-  upvote: function() {
+  add_user: function(place, user) {
     return {
-      type: this.UPVOTE
+      type: this.ADD_USER,
+      place,
+      user
     }
   },
 

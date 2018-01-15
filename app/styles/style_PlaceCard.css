@@ -9,10 +9,11 @@
 }
 
 .img {
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 5px;
-    width: 150px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  width: 150px;
+  height: 115.5px;
 }
 
 .img:hover {
@@ -28,8 +29,19 @@
   width: 76.6%;
   float: left;
   text-align: center;
+  height: 115px;
+  padding: 10px;
 }
 
 .panel-title {
   height: 120px;
+}
+
+.going-btn {
+  display: block;
+  background-color: #1d2113;
+  color: yellow;
+  width: 30%;
+  margin: auto;
+  margin-top: 30px;
 }

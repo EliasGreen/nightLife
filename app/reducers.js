@@ -1,13 +1,13 @@
 /* reducers */
 
-const { UPVOTE, DOWNVOTE } = require('./actions');
+const { ADD_USER, DOWNVOTE } = require('./actions');
 
 function reducers(state = [], action) {
   switch (action.type) {
-    case UPVOTE: 
+    case ADD_USER: 
       return Object.assign({}, state, {
-        voteScore: ( state.voteScore ) ? state.voteScore + 1 : 1,
-        voteCount: ( state.voteCount ) ? state.voteCount + 1 : 1
+        place: action.place,
+        users: action.user
       });
     case DOWNVOTE:
       let ret = Object.assign({}, state, {
