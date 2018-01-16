@@ -11,20 +11,40 @@ const { createStore } = require('redux');
 const { Provider } = require('react-redux');
 const reducers = require('./reducers');
 
-let store = createStore(reducers);
+// get the current store of places from DB
+      const xhr = new XMLHttpRequest();
 
-store.subscribe( () => {
-  console.log(store.getState());
-});
+      xhr.open('POST', '/get-places', true);
 
-/* Import Components */
-const Main = require('./components/Main');
+      xhr.send();
 
-render((
-  <Provider store={store}>
-    <BrowserRouter>
-      <div>
-        <Route exact path="/" component={Main}/>
-      </div>
-    </BrowserRouter>
-  </Provider>), document.getElementById('main'));
+      xhr.onreadystatechange = function() {
+        if (this.readyState != 4) return;
+          if (this.status != 200) {
+            alert( 'error: ' + (this.status ? this.statusText : 'request has not been set') );
+            return;
+          }
+          let response = JSON.parse(this.responseText);
+          let initialState = [];
+          for(let i = 0; i < response.length; i++) {
+             initialState.push({place: response[i]["name"], user: response[i]["user"]});
+          }
+          //console.log(initialState);
+          let store = createStore(reducers, {arr: initialState});
+            
+          store.subscribe( () => {
+            console.log(store.getState());
+          });
+
+          /* Import Components */
+          const Main = require('./components/Main');
+
+          render((
+            <Provider store={store}>
+              <BrowserRouter>
+                <div>
+                  <Route exact path="/" component={Main}/>
+                </div>
+              </BrowserRouter>
+            </Provider>), document.getElementById('main'));
+        }

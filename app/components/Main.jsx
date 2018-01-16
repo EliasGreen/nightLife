@@ -88,7 +88,7 @@ class Main extends React.Component {
         }
   }
   /**************************/
-  handleSearchClick(event) {
+  handleSearchClick(event) { 
       let that = this;
       const xhr = new XMLHttpRequest();
       
@@ -108,7 +108,10 @@ class Main extends React.Component {
           return;
         }
         let response = JSON.parse(this.responseText);
-        //console.log(response);
+        console.log(response);
+        that.setState({
+          ["places_bar"]: "loading..."
+           });
         that.setState({
           ["places_bar"]: <PlaceCardCtrl arrayOfPlaces={response.arr.businesses} nickname={response.nickname}/>
            });
