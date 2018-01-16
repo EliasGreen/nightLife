@@ -21309,23 +21309,43 @@ const { createStore } = __webpack_require__(182);
 const { Provider } = __webpack_require__(113);
 const reducers = __webpack_require__(391);
 
-let store = createStore(reducers);
+// get the current store of places from DB
+      const xhr = new XMLHttpRequest();
 
-store.subscribe( () => {
-  console.log(store.getState());
-});
+      xhr.open('POST', '/get-places', true);
 
-/* Import Components */
-const Main = __webpack_require__(392);
+      xhr.send();
 
-render((
-  React.createElement(Provider, {store: store}, 
-    React.createElement(BrowserRouter, null, 
-      React.createElement("div", null, 
-        React.createElement(Route, {exact: true, path: "/", component: Main})
-      )
-    )
-  )), document.getElementById('main'));
+      xhr.onreadystatechange = function() {
+        if (this.readyState != 4) return;
+          if (this.status != 200) {
+            alert( 'error: ' + (this.status ? this.statusText : 'request has not been set') );
+            return;
+          }
+          let response = JSON.parse(this.responseText);
+          let initialState = [];
+          for(let i = 0; i < response.length; i++) {
+             initialState.push({place: response[i]["name"], user: response[i]["user"]});
+          }
+          //console.log(initialState);
+          let store = createStore(reducers, {arr: initialState});
+            
+          store.subscribe( () => {
+            console.log(store.getState());
+          });
+
+          /* Import Components */
+          const Main = __webpack_require__(392);
+
+          render((
+            React.createElement(Provider, {store: store}, 
+              React.createElement(BrowserRouter, null, 
+                React.createElement("div", null, 
+                  React.createElement(Route, {exact: true, path: "/", component: Main})
+                )
+              )
+            )), document.getElementById('main'));
+        }
 
 /***/ }),
 /* 242 */
@@ -37620,12 +37640,56 @@ const initialUserState = {
 }
 
 function reducers(state = initialUserState, action) {
-  let obj
+  let obj;
+  let xhr;
+  let body;
   switch (action.type) {
     case ADD_USER:
+      // request
+      xhr = new XMLHttpRequest();
+      
+      xhr.open('POST', '/add-place', true);
+      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+      
+      
+      body = 'name=' + encodeURIComponent(action.place) +
+          '&user=' + encodeURIComponent(action.user);
+
+
+      xhr.send(body);
+
+      xhr.onreadystatechange = function() {
+            if (this.readyState != 4) return;
+            if (this.status != 200) {
+              alert( 'error: ' + (this.status ? this.statusText : 'request has not been set') );
+              return;
+            }
+        }
+        /**********/
        obj = Object.assign(state, state.arr.push({place: action.place, user: action.user}));
        return obj;
     case DELETE_USER:
+       // request
+      xhr = new XMLHttpRequest();
+      
+      xhr.open('POST', '/delete-place', true);
+      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+      
+      
+      body = 'name=' + encodeURIComponent(action.place) +
+          '&user=' + encodeURIComponent(action.user);
+
+
+      xhr.send(body);
+
+      xhr.onreadystatechange = function() {
+            if (this.readyState != 4) return;
+            if (this.status != 200) {
+              alert( 'error: ' + (this.status ? this.statusText : 'request has not been set') );
+              return;
+            }
+        }
+        /**********/
       let pos = state.arr.map(function(e) {return e.place == action.place && e.nickname == action.nickname}).indexOf(true);
       state.arr.splice(pos, 1)
        obj = Object.assign(state);
@@ -37731,7 +37795,7 @@ class Main extends React.Component {
         }
   }
   /**************************/
-  handleSearchClick(event) {
+  handleSearchClick(event) { 
       let that = this;
       const xhr = new XMLHttpRequest();
       
@@ -37751,7 +37815,10 @@ class Main extends React.Component {
           return;
         }
         let response = JSON.parse(this.responseText);
-        //console.log(response);
+        console.log(response);
+        that.setState({
+          ["places_bar"]: "loading..."
+           });
         that.setState({
           ["places_bar"]: React.createElement(PlaceCardCtrl, {arrayOfPlaces: response.arr.businesses, nickname: response.nickname})
            });
@@ -49611,7 +49678,6 @@ class PlaceCard extends React.Component {
    // variables for Main class
     this.state = {
       activeKey: "1",
-      activeBtn: null,
       places: null
     };
     this.handleSelect = this.handleSelect.bind(this);
@@ -49628,18 +49694,12 @@ class PlaceCard extends React.Component {
   /**************************************************/
   handleClickToGo(name, nickname) {
 		this.props.add_user(name, nickname);
-    this.setState({
-          ["activeBtn"]: true 
-           });
     this.componentWillMount();
     this.forceUpdate();
 	}
   /**************************************************/
   handleClickToUnGo(name, nickname) {
 		this.props.delete_user(name, nickname);
-    this.setState({
-          ["activeBtn"]: false 
-           });
     this.componentWillMount();
     this.forceUpdate();
 	}
@@ -49654,12 +49714,23 @@ class PlaceCard extends React.Component {
     let btn = null;
      let places = arrayOfPlaces.map( (el, index) => {
        let obj = {place: el.name, user: nickname};
-       let pos = state.arr.map(function(e) {return e.place == obj.place && e.nickname == obj.nickname}).indexOf(true); 
+       // check if current user going to a place
+       let pos = state.arr.map(function(e) {return e.place == obj.place && e.user == obj.user}).indexOf(true);
+       // array of users of the current place
+       /***/
+       let place_users_to_loop = state.arr.map(function(e){if(e.place == obj.place) return e});
+       let place_users = [];
+       //console.log(place_users);
+       for(let i = 0; i < place_users_to_loop.length; i++) {
+         if(place_users_to_loop[i] !== undefined) place_users.push(place_users_to_loop[i]["user"]);
+       }
+       if(place_users.length == 0) place_users.push("No one is going now. Be the first!");
+       //console.log(place_users);
+       /***/
        if(pos > -1) {
+         //console.log(obj);
+         //console.log(pos);
            btn = React.createElement("button", {className: "going-btn", onClick: nickname.length > 0 ? () => that.handleClickToUnGo(el.name, nickname)  : () => alert("Please, log in firstly")}, "You are going!");
-         that.setState({
-          ["activeBtn"]: true 
-           });
          // console.log(activeBtn);
          return (
          React.createElement(Panel, {eventKey: el.id, key: "key"+el.id}, 
@@ -49676,8 +49747,7 @@ class PlaceCard extends React.Component {
                     ), 
                     React.createElement(Panel.Collapse, null, 
                       React.createElement(Panel.Body, null, 
-                        "users!" + " " +
-                        "list"
+                        place_users
                       )
                     )
                )
@@ -49685,11 +49755,6 @@ class PlaceCard extends React.Component {
        }
        else {
          btn = React.createElement("button", {className: "going-btn", onClick: nickname.length > 0 ? () => that.handleClickToGo(el.name, nickname)  : () => alert("Please, log in firstly")}, "You are not going!");
-         that.setState({
-          ["activeBtn"]: false  
-           },
-    // after state is set => return panel
-          () => {});  
          return (
          React.createElement(Panel, {eventKey: el.id, key: "key"+el.id}, 
                     React.createElement(Panel.Heading, null, 
@@ -49705,8 +49770,7 @@ class PlaceCard extends React.Component {
                     ), 
                     React.createElement(Panel.Collapse, null, 
                       React.createElement(Panel.Body, null, 
-                        "users!" + " " +
-                        "list"
+                        place_users
                       )
                     )
                )
@@ -49728,7 +49792,6 @@ render() {
             id: "accordion-controlled-example", 
             activeKey: this.state.activeKey, 
             onSelect: this.handleSelect}, 
-             this.state.activeBtn, 
                 this.state.places
           )
       )

@@ -1,3 +1,4 @@
+
 // init project
 const express = require('express');
 const app = express();
@@ -96,12 +97,11 @@ let userSchema = new Schema({
 });
 let placeSchema = new Schema({
     name: String,
-  // set max and min to prevent from bugs and tricky users the app
-    count: { type: Number, min: 0, max: 30 }
+    user: String
 });
 // get the model
 let userModel = mongoose.model('usersforbars', userSchema);
-let place = mongoose.model('bars', placeSchema);
+let placeModel = mongoose.model('bars', placeSchema);
 
 /***********************************/
 
@@ -194,6 +194,33 @@ app.post("/send-data-to-search", function(request, response) {
           }).catch(e => {
             console.log(e);
     });
+});
+/***********************************/
+app.post("/add-place", function(request, response) {
+    // add a place to bars
+      let obj = {name: request.body["name"], user: request.body["user"]};
+      let place = new placeModel(obj);
+      place.save(function (err) {
+        if (!err) {
+          console.log('place Success! saved');
+          response.json({error: "zero"});
+        }
+      });
+});
+/***********************************/
+app.post("/delete-place", function(request, response) {
+      placeModel.remove({name: request.body["name"], user: request.body["user"]}, function (err) {
+                  if (!err) {
+                    console.log("place removed!");
+                    response.json({error: "zero"});
+                  }
+                });
+});
+/***********************************/
+app.post("/get-places", function(request, response) {
+      placeModel.find(function (err, documents) {
+                  if (!err) response.json(documents);
+                });
 });
 /***********************************/
 app.post("/islogedin", function(request, response) {
