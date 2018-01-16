@@ -4,7 +4,7 @@ const { connect } = require('react-redux');
 const Link = require('react-router-dom').Link
 const style = require('../styles/style_Main');
 const { Grid, Col, Row, ButtonToolbar, Button} = require('react-bootstrap');
-const PlaceCard = require('./PlaceCard');
+const PlaceCardCtrl = require('../containers/PlaceCardCtrl');
 
 
 /* the main page for the index route of this app */
@@ -108,8 +108,9 @@ class Main extends React.Component {
           return;
         }
         let response = JSON.parse(this.responseText);
+        //console.log(response);
         that.setState({
-          ["places_bar"]: <PlaceCard arrayOfPlaces={response.businesses}/>
+          ["places_bar"]: <PlaceCardCtrl arrayOfPlaces={response.arr.businesses} nickname={response.nickname}/>
            });
         }
     event.preventDefault();

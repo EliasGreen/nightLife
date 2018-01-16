@@ -1,20 +1,22 @@
 /* reducers */
 
-const { ADD_USER, DOWNVOTE } = require('./actions');
+const { ADD_USER, DELETE_USER } = require('./actions');
 
-function reducers(state = [], action) {
+const initialUserState = {
+    arr: []
+}
+
+function reducers(state = initialUserState, action) {
+  let obj
   switch (action.type) {
-    case ADD_USER: 
-      return Object.assign({}, state, {
-        place: action.place,
-        users: action.user
-      });
-    case DOWNVOTE:
-      let ret = Object.assign({}, state, {
-        voteScore: ( state.voteScore ) ? state.voteScore - 1 : -1,
-        voteCount: ( state.voteCount ) ? state.voteCount + 1 : 1
-      });
-       return ret;
+    case ADD_USER:
+       obj = Object.assign(state, state.arr.push({place: action.place, user: action.user}));
+       return obj;
+    case DELETE_USER:
+      let pos = state.arr.map(function(e) {return e.place == action.place && e.nickname == action.nickname}).indexOf(true);
+      state.arr.splice(pos, 1)
+       obj = Object.assign(state);
+       return obj;
     default:
       return state;
   }
