@@ -177,18 +177,20 @@ app.post("/log-out", function(request, response) {
 /***********************************/
 app.post("/send-data-to-search", function(request, response) {
     // if loged in -> send search_string to user in DB
+    let nickname = "";
     if(request.isAuthenticated()) {
       userModel.findOneAndUpdate({"_id": request.session.passport.user}, {search: request.body["search_string"]}, (err, document) => {
              if(err) {
                console.log("ERROR!: ", err);
-             } 
+             }
+             nickname = document.nickname;
         });
     }
     // for search
     client.search({
         location: request.body["search_string"]
       }).then(res => {
-            response.json(res.jsonBody);
+            response.json({arr: res.jsonBody, nickname: nickname});
           }).catch(e => {
             console.log(e);
     });

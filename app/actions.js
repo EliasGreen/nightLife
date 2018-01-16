@@ -4,7 +4,7 @@ module.exports = {
  
   ADD_USER: 'ADD_USER',
   
-  DOWNVOTE: 'DOWNVOTE',
+  DELETE_USER: 'DELETE_USER',
 
   add_user: function(place, user) {
     return {
@@ -14,9 +14,11 @@ module.exports = {
     }
   },
 
-  downvote: function() {
+  delete_user: function(place, user) {
     return {
-      type: this.DOWNVOTE
+      type: this.DELETE_USER,
+      place,
+      user
     }
   }
   
