@@ -103,11 +103,11 @@ class UserPlaceCard extends React.Component {
                                   <button className="going-btn-user" onClick={() => that.handleClickToUnGo(e, nickname)}>Cancel</button>    
                                 </div>
                             </Panel.Title>
-                            <Panel.Toggle>going btn with label</Panel.Toggle>
+                            <Panel.Toggle className="a-toggle-user">Also are going</Panel.Toggle>
                           </Panel.Heading>
                           <Panel.Collapse>
                             <Panel.Body>
-                              {other_users}
+                              {other_users.map((e) => <div>{e}</div>)}
                             </Panel.Body>
                           </Panel.Collapse>
                      </Panel>

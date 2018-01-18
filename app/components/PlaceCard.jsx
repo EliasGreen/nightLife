@@ -87,18 +87,18 @@ class PlaceCard extends React.Component {
                             {btn}    
                           </div>
                       </Panel.Title>
-                      <Panel.Toggle>going btn with label</Panel.Toggle>
+                      <Panel.Toggle className="a-toggle">Users who is going</Panel.Toggle>
                     </Panel.Heading>
                     <Panel.Collapse>
                       <Panel.Body>
-                        {place_users}
+                        {place_users.map((e) => <div>{e}</div>)}
                       </Panel.Body>
                     </Panel.Collapse>
                </Panel>
          );
        }
        else {
-         btn = <button className="going-btn" onClick={nickname.length > 0 ? () => that.handleClickToGo(el.name, nickname)  : () => alert("Please, log in firstly")}>You are not going!</button>;
+         btn = <button className="ungoing-btn" onClick={nickname.length > 0 ? () => that.handleClickToGo(el.name, nickname)  : () => alert("Please, log in firstly")}>You are not going!</button>;
          return (
          <Panel eventKey={el.id} key={"key"+el.id}>
                     <Panel.Heading>
@@ -110,11 +110,11 @@ class PlaceCard extends React.Component {
                             {btn}    
                           </div>
                       </Panel.Title>
-                      <Panel.Toggle>going btn with label</Panel.Toggle>
+                      <Panel.Toggle className="a-toggle">Users who is going</Panel.Toggle>
                     </Panel.Heading>
                     <Panel.Collapse>
                       <Panel.Body>
-                        {place_users}
+                        {place_users.map((e) => <div>{e}</div>)}
                       </Panel.Body>
                     </Panel.Collapse>
                </Panel>

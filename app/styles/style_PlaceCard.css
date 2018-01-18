@@ -39,9 +39,28 @@
 
 .going-btn {
   display: block;
+  background-color: #f92d53;
+  color: white;
+  width: 60%;
+  height: 30%;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.ungoing-btn {
+  display: block;
   background-color: #1d2113;
   color: yellow;
-  width: 30%;
+  width: 60%;
+  height: 30%;
   margin: auto;
-  margin-top: 30px;
+  margin-top: 20px;
+}
+
+.a-toggle, .a-toggle:hover, .a-toggle:visited, .a-toggle:active {
+    color: white;
+    background-color: #4caf50;
+    text-decoration: none;
+    padding: 5px;
+    margin: 10px;
 }

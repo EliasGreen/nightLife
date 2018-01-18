@@ -249,3 +249,41 @@ cursor: pointer;
 }
 /********************************************************
 ********************************************************/
+.quote-body {
+    margin: auto;
+    color: rgb(210, 224, 165);
+    text-align: center;
+    width: 60%;
+    margin-top: 20%;
+    font-size: 30px;
+}
+.quote-author {
+      margin: auto;
+    margin-top: 10px;
+    color: white;
+    text-align: center;
+}
+/* Loader */
+
+.loader {
+      border: 16px solid #4caf50;
+    border-radius: 50%;
+    border-top: 100px solid #ffffff;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 1s linear infinite;
+    margin: auto;
+    margin-top: 25%
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

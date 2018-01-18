@@ -23,7 +23,10 @@ class Main extends React.Component {
       // button-bar
       button_bar: "",
       search_string: "",
-      places_bar: null
+      places_bar:  <div>
+                       <div className="quote-body"> “It was the kind of bar where everybody knew your name, as long as your name was ‘Motherfucker’.” </div>
+                       <div className="quote-author"> ― John Connolly, A Time of Torment </div>
+                    </div>
     };
      this.handleClickSignUp = this.handleClickSignUp.bind(this);
      this.handleClickLogIn = this.handleClickLogIn.bind(this);
@@ -89,7 +92,12 @@ class Main extends React.Component {
         }
   }
   /**************************/
-  handleSearchClick(event) { 
+  handleSearchClick(event) {
+      // start "loader"
+       this.setState({
+            ["places_bar"]: <div className="loader"></div>
+             }); 
+    
       let that = this;
       const xhr = new XMLHttpRequest();
       
