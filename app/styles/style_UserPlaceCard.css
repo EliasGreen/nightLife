@@ -49,3 +49,11 @@
   height: 100%;
   margin: auto;
 }
+
+.a-toggle-user, .a-toggle-user:hover, .a-toggle-user:visited, .a-toggle-user:active {
+    color: white;
+    background-color: #4caf50;
+    text-decoration: none;
+    padding: 5px;
+    margin: 10px;
+}
