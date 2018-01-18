@@ -33,7 +33,7 @@ function reducers(state = initialUserState, action) {
             }
         }
         /**********/
-       obj = Object.assign(state, state.arr.push({place: action.place, user: action.user}));
+       obj = Object.assign({}, state, state.arr.push({place: action.place, user: action.user}));
        return obj;
     case DELETE_USER:
        // request
@@ -57,9 +57,11 @@ function reducers(state = initialUserState, action) {
             }
         }
         /**********/
-      let pos = state.arr.map(function(e) {return e.place == action.place && e.nickname == action.nickname}).indexOf(true);
-      state.arr.splice(pos, 1)
-       obj = Object.assign(state);
+      let pos = state.arr.map(function(e) {return e.place == action.place && e.user == action.user}).indexOf(true);
+      console.log("pos "+pos);
+      let debug = state.arr.splice(pos, 1)
+      console.log(debug);
+       obj = Object.assign({}, state);
        return obj;
     default:
       return state;

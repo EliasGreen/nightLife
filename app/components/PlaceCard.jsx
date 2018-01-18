@@ -1,7 +1,7 @@
 const React = require('react');
 const Link = require('react-router-dom').Link
 const style = require('../styles/style_PlaceCard');
-const { Grid, Col, Row, ButtonToolbar, Button, PanelGroup, Panel} = require('react-bootstrap');
+const {Grid, Col, Row, ButtonToolbar, Button, PanelGroup, Panel} = require('react-bootstrap');
 
 
 /* the PlaceCard react component that shows a place to which you can go */
@@ -26,16 +26,27 @@ class PlaceCard extends React.Component {
 	}
   /**************************************************/
   handleClickToGo(name, nickname) {
+    console.log("GO");
+    console.log("NAME/PLACE : "+name);
+    console.log("NICKNAME : "+nickname);
 		this.props.add_user(name, nickname);
     this.componentWillMount();
     this.forceUpdate();
 	}
   /**************************************************/
   handleClickToUnGo(name, nickname) {
+    console.log("UNGO");
+    console.log("NAME/PLACE : "+name);
+    console.log("NICKNAME : "+nickname);
 		this.props.delete_user(name, nickname);
     this.componentWillMount();
     this.forceUpdate();
 	}
+  /**************************************************/
+  componentWillReceiveProps(nextprops) {
+    this.componentWillMount();
+    this.forceUpdate();
+  }
   /**************************************************/
   // set the Place state
   /**************************************************/
@@ -110,7 +121,7 @@ class PlaceCard extends React.Component {
          );
        }  
     });
-    console.log(places);
+    //console.log(places);
     this.setState({
       ["places"]: places
     });

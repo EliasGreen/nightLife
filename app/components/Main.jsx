@@ -5,6 +5,7 @@ const Link = require('react-router-dom').Link
 const style = require('../styles/style_Main');
 const { Grid, Col, Row, ButtonToolbar, Button} = require('react-bootstrap');
 const PlaceCardCtrl = require('../containers/PlaceCardCtrl');
+const UserPlaceCardCtrl = require('../containers/UserPlaceCardCtrl');
 
 
 /* the main page for the index route of this app */
@@ -222,12 +223,14 @@ class Main extends React.Component {
       let isLogedIn = JSON.parse(this.responseText).isLogedIn;
       let nickname = JSON.parse(this.responseText).nickname;      let search_string = JSON.parse(this.responseText).search_string;
       let button_bar;
+      let userPlacesLabel;
       if(isLogedIn) {
        button_bar = <ButtonToolbar className="buttonToolbar">
                         <h3 className="user-places" style={{marginBottom: "20px"}}>Hello {nickname}</h3>
                         {/* Show modal for confirmation to log out */}
                         <button className="btn-group-main" onClick={that.handleClickLogOut}>Log /Out/</button>
                     </ButtonToolbar>;
+        userPlacesLabel = <UserPlaceCardCtrl nickname={nickname}/>;
       }
       else {
         button_bar = <ButtonToolbar className="buttonToolbar">
@@ -237,10 +240,12 @@ class Main extends React.Component {
                     {/* Show modal for login a user */}
                     <button className="btn-group-main" onClick={that.handleClickLogIn}>Login /In/</button>
                   </ButtonToolbar>;
+        userPlacesLabel = <div className="user-places-label">Please, log in to see your chosen places</div>;
       }
       that.setState({
           ["button_bar"]: button_bar,
-          ["search_string"]: search_string
+          ["search_string"]: search_string,
+          ["userPlacesLabel"]: userPlacesLabel
       });
     }
   }

@@ -1,15 +1,17 @@
 const { connect } = require('react-redux');
 const actions = require('../actions');
-const PlaceCard = require('../components/PlaceCard');
+const UserPlaceCard = require('../components/UserPlaceCard');
 /**************************************************/
 /**************************************************/
 /*              PlaceCard Controller              */
 /**************************************************/
 /**************************************************/
 const mapStateToProps = function(state) {
-    return {
-      state
-    };
+  //UserPlaceCard.forceUpdate();
+  return {
+    state
+    //: state.arr
+  };
 }
 
 const mapDispatchToProps = function(dispatch) {
@@ -23,9 +25,9 @@ const mapDispatchToProps = function(dispatch) {
   }
 }
 
-const PlaceCardCtrl = connect(
+const UserPlaceCardCtrl = connect(
   mapStateToProps,
   mapDispatchToProps
-)(PlaceCard);
+)(UserPlaceCard);
 
-module.exports = PlaceCardCtrl;
+module.exports = UserPlaceCardCtrl;
