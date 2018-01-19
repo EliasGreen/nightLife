@@ -26,17 +26,9 @@ class UserPlaceCard extends React.Component {
 	}
   /**************************************************/
   handleClickToUnGo(name, nickname) {
-    console.log("CANCEL");
-    console.log("NAME/PLACE : "+name);
-    console.log("NICKNAME : "+nickname);
 		this.props.delete_user(name, nickname);
-    // this.componentWillMount();
-    // this.forceUpdate();
 	}
   /**************************************************/
-  componentWillMount() {
-    console.log("Mount");
-  }
    componentWillReceiveProps(nextprops) {
     this.setState({
           ["main_state"]: nextprops.state.arr
@@ -44,7 +36,6 @@ class UserPlaceCard extends React.Component {
   }
 
     render() {
-      console.log("redner!");
       // deconstructing
       const {main_state, nickname} = this.state
       const that = this;

@@ -117,7 +117,6 @@ class Main extends React.Component {
           return;
         }
         let response = JSON.parse(this.responseText);
-        console.log(response);
         that.setState({
           ["places_bar"]: "loading..."
            });

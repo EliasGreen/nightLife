@@ -29,7 +29,6 @@ const reducers = require('./reducers');
           for(let i = 0; i < response.length; i++) {
              initialState.push({place: response[i]["name"], user: response[i]["user"]});
           }
-          //console.log(initialState);
           let store = createStore(reducers, {arr: initialState});
             
           store.subscribe( () => {
