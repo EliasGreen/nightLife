@@ -57,10 +57,8 @@ function reducers(state = initialUserState, action) {
             }
         }
         /**********/
-      let pos = state.arr.map(function(e) {return e.place == action.place && e.user == action.user}).indexOf(true);
-      console.log("pos "+pos);
-      let debug = state.arr.splice(pos, 1)
-      console.log(debug);
+       let pos = state.arr.map(function(e) {return e.place == action.place && e.user == action.user}).indexOf(true);
+       state.arr.splice(pos, 1)
        obj = Object.assign({}, state);
        return obj;
     default:

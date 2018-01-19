@@ -26,18 +26,12 @@ class PlaceCard extends React.Component {
 	}
   /**************************************************/
   handleClickToGo(name, nickname) {
-    console.log("GO");
-    console.log("NAME/PLACE : "+name);
-    console.log("NICKNAME : "+nickname);
 		this.props.add_user(name, nickname);
     this.componentWillMount();
     this.forceUpdate();
 	}
   /**************************************************/
   handleClickToUnGo(name, nickname) {
-    console.log("UNGO");
-    console.log("NAME/PLACE : "+name);
-    console.log("NICKNAME : "+nickname);
 		this.props.delete_user(name, nickname);
     this.componentWillMount();
     this.forceUpdate();
@@ -64,18 +58,13 @@ class PlaceCard extends React.Component {
        /***/
        let place_users_to_loop = state.arr.map(function(e){if(e.place == obj.place) return e});
        let place_users = [];
-       //console.log(place_users);
        for(let i = 0; i < place_users_to_loop.length; i++) {
          if(place_users_to_loop[i] !== undefined) place_users.push(place_users_to_loop[i]["user"]);
        }
        if(place_users.length == 0) place_users.push("No one is going now. Be the first!");
-       //console.log(place_users);
        /***/
        if(pos > -1) {
-         //console.log(obj);
-         //console.log(pos);
            btn = <button className="going-btn" onClick={nickname.length > 0 ? () => that.handleClickToUnGo(el.name, nickname)  : () => alert("Please, log in firstly")}>You are going!</button>;
-         // console.log(activeBtn);
          return (
          <Panel eventKey={el.id} key={"key"+el.id}>
                     <Panel.Heading>
@@ -121,14 +110,12 @@ class PlaceCard extends React.Component {
          );
        }  
     });
-    //console.log(places);
     this.setState({
       ["places"]: places
     });
   }
   
 render() {
-  // console.log("render!");
     return (
       <div className="PlaceCardContainer">
            <PanelGroup

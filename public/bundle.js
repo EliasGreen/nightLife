@@ -21327,7 +21327,6 @@ const reducers = __webpack_require__(391);
           for(let i = 0; i < response.length; i++) {
              initialState.push({place: response[i]["name"], user: response[i]["user"]});
           }
-          //console.log(initialState);
           let store = createStore(reducers, {arr: initialState});
             
           store.subscribe( () => {
@@ -37690,10 +37689,8 @@ function reducers(state = initialUserState, action) {
             }
         }
         /**********/
-      let pos = state.arr.map(function(e) {return e.place == action.place && e.user == action.user}).indexOf(true);
-      console.log("pos "+pos);
-      let debug = state.arr.splice(pos, 1)
-      console.log(debug);
+       let pos = state.arr.map(function(e) {return e.place == action.place && e.user == action.user}).indexOf(true);
+       state.arr.splice(pos, 1)
        obj = Object.assign({}, state);
        return obj;
     default:
@@ -37826,7 +37823,6 @@ class Main extends React.Component {
           return;
         }
         let response = JSON.parse(this.responseText);
-        console.log(response);
         that.setState({
           ["places_bar"]: "loading..."
            });
@@ -49708,18 +49704,12 @@ class PlaceCard extends React.Component {
 	}
   /**************************************************/
   handleClickToGo(name, nickname) {
-    console.log("GO");
-    console.log("NAME/PLACE : "+name);
-    console.log("NICKNAME : "+nickname);
 		this.props.add_user(name, nickname);
     this.componentWillMount();
     this.forceUpdate();
 	}
   /**************************************************/
   handleClickToUnGo(name, nickname) {
-    console.log("UNGO");
-    console.log("NAME/PLACE : "+name);
-    console.log("NICKNAME : "+nickname);
 		this.props.delete_user(name, nickname);
     this.componentWillMount();
     this.forceUpdate();
@@ -49746,18 +49736,13 @@ class PlaceCard extends React.Component {
        /***/
        let place_users_to_loop = state.arr.map(function(e){if(e.place == obj.place) return e});
        let place_users = [];
-       //console.log(place_users);
        for(let i = 0; i < place_users_to_loop.length; i++) {
          if(place_users_to_loop[i] !== undefined) place_users.push(place_users_to_loop[i]["user"]);
        }
        if(place_users.length == 0) place_users.push("No one is going now. Be the first!");
-       //console.log(place_users);
        /***/
        if(pos > -1) {
-         //console.log(obj);
-         //console.log(pos);
            btn = React.createElement("button", {className: "going-btn", onClick: nickname.length > 0 ? () => that.handleClickToUnGo(el.name, nickname)  : () => alert("Please, log in firstly")}, "You are going!");
-         // console.log(activeBtn);
          return (
          React.createElement(Panel, {eventKey: el.id, key: "key"+el.id}, 
                     React.createElement(Panel.Heading, null, 
@@ -49803,14 +49788,12 @@ class PlaceCard extends React.Component {
          );
        }  
     });
-    //console.log(places);
     this.setState({
       ["places"]: places
     });
   }
   
 render() {
-  // console.log("render!");
     return (
       React.createElement("div", {className: "PlaceCardContainer"}, 
            React.createElement(PanelGroup, {
@@ -49885,10 +49868,8 @@ const UserPlaceCard = __webpack_require__(547);
 /**************************************************/
 /**************************************************/
 const mapStateToProps = function(state) {
-  //UserPlaceCard.forceUpdate();
   return {
     state
-    //: state.arr
   };
 }
 
@@ -49942,17 +49923,9 @@ class UserPlaceCard extends React.Component {
 	}
   /**************************************************/
   handleClickToUnGo(name, nickname) {
-    console.log("CANCEL");
-    console.log("NAME/PLACE : "+name);
-    console.log("NICKNAME : "+nickname);
 		this.props.delete_user(name, nickname);
-    // this.componentWillMount();
-    // this.forceUpdate();
 	}
   /**************************************************/
-  componentWillMount() {
-    console.log("Mount");
-  }
    componentWillReceiveProps(nextprops) {
     this.setState({
           ["main_state"]: nextprops.state.arr
@@ -49960,7 +49933,6 @@ class UserPlaceCard extends React.Component {
   }
 
     render() {
-      console.log("redner!");
       // deconstructing
       const {main_state, nickname} = this.state
       const that = this;

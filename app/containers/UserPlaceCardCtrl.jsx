@@ -7,10 +7,8 @@ const UserPlaceCard = require('../components/UserPlaceCard');
 /**************************************************/
 /**************************************************/
 const mapStateToProps = function(state) {
-  //UserPlaceCard.forceUpdate();
   return {
     state
-    //: state.arr
   };
 }
 
